@@ -1,0 +1,100 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29920.165
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hearthstone Deck Tracker", "Hearthstone Deck Tracker\Hearthstone Deck Tracker.csproj", "{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CF4E289-B871-4E52-B451-EE7BF1250359} = {7CF4E289-B871-4E52-B451-EE7BF1250359}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDTTests", "HDTTests\HDTTests.csproj", "{A99438AD-6733-4FDA-928C-30C37255FF1B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDTUpdate", "HDTUpdate\HDTUpdate.csproj", "{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HDTUninstaller", "HDTUninstaller\HDTUninstaller.csproj", "{245A59F5-6E48-4B5B-B828-24A4C3EED309}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{239EBA5D-709C-446C-93FD-40BBF9D5CBBF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		bootstrap.bat = bootstrap.bat
+		CHANGELOG.md = CHANGELOG.md
+		lib\De.TorstenMandelkow.MetroChart.dll = lib\De.TorstenMandelkow.MetroChart.dll
+		generate_resources.bat = generate_resources.bat
+		lib\HearthDb.dll = lib\HearthDb.dll
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HearthWatcher", "HearthWatcher\HearthWatcher.csproj", "{02E1843D-3F5D-45E0-9B16-1F28209EED82}"
+	ProjectSection(ProjectDependencies) = postProject
+		{7CF4E289-B871-4E52-B451-EE7BF1250359} = {7CF4E289-B871-4E52-B451-EE7BF1250359}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HearthWatcher.Test", "HearthWatcher.Test\HearthWatcher.Test.csproj", "{D081BCA4-14FD-4FBC-B92A-82574AB0478B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Bootstrap", "Bootstrap\Bootstrap.csproj", "{7CF4E289-B871-4E52-B451-EE7BF1250359}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignToolShim", "SignToolShim\SignToolShim.csproj", "{1324828D-7E53-4458-BE90-A6EEAA565810}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+		Squirrel|x86 = Squirrel|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}.Debug|x86.ActiveCfg = Debug|x86
+		{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}.Debug|x86.Build.0 = Debug|x86
+		{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}.Release|x86.ActiveCfg = Release|x86
+		{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}.Release|x86.Build.0 = Release|x86
+		{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}.Squirrel|x86.ActiveCfg = Squirrel|x86
+		{E63A3F1C-E662-4E62-BE43-AF27CB9E953D}.Squirrel|x86.Build.0 = Squirrel|x86
+		{A99438AD-6733-4FDA-928C-30C37255FF1B}.Debug|x86.ActiveCfg = Debug|x86
+		{A99438AD-6733-4FDA-928C-30C37255FF1B}.Debug|x86.Build.0 = Debug|x86
+		{A99438AD-6733-4FDA-928C-30C37255FF1B}.Release|x86.ActiveCfg = Release|x86
+		{A99438AD-6733-4FDA-928C-30C37255FF1B}.Release|x86.Build.0 = Release|x86
+		{A99438AD-6733-4FDA-928C-30C37255FF1B}.Squirrel|x86.ActiveCfg = Squirrel|x86
+		{A99438AD-6733-4FDA-928C-30C37255FF1B}.Squirrel|x86.Build.0 = Squirrel|x86
+		{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}.Debug|x86.ActiveCfg = Debug|x86
+		{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}.Debug|x86.Build.0 = Debug|x86
+		{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}.Release|x86.ActiveCfg = Release|x86
+		{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}.Release|x86.Build.0 = Release|x86
+		{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}.Squirrel|x86.ActiveCfg = Squirrel|x86
+		{4DA33EE8-3F32-4D91-82FA-3BC7F014263D}.Squirrel|x86.Build.0 = Squirrel|x86
+		{245A59F5-6E48-4B5B-B828-24A4C3EED309}.Debug|x86.ActiveCfg = Debug|x86
+		{245A59F5-6E48-4B5B-B828-24A4C3EED309}.Debug|x86.Build.0 = Debug|x86
+		{245A59F5-6E48-4B5B-B828-24A4C3EED309}.Release|x86.ActiveCfg = Release|x86
+		{245A59F5-6E48-4B5B-B828-24A4C3EED309}.Release|x86.Build.0 = Release|x86
+		{245A59F5-6E48-4B5B-B828-24A4C3EED309}.Squirrel|x86.ActiveCfg = Squirrel|x86
+		{245A59F5-6E48-4B5B-B828-24A4C3EED309}.Squirrel|x86.Build.0 = Squirrel|x86
+		{02E1843D-3F5D-45E0-9B16-1F28209EED82}.Debug|x86.ActiveCfg = Debug|x86
+		{02E1843D-3F5D-45E0-9B16-1F28209EED82}.Debug|x86.Build.0 = Debug|x86
+		{02E1843D-3F5D-45E0-9B16-1F28209EED82}.Release|x86.ActiveCfg = Release|x86
+		{02E1843D-3F5D-45E0-9B16-1F28209EED82}.Release|x86.Build.0 = Release|x86
+		{02E1843D-3F5D-45E0-9B16-1F28209EED82}.Squirrel|x86.ActiveCfg = Release|x86
+		{02E1843D-3F5D-45E0-9B16-1F28209EED82}.Squirrel|x86.Build.0 = Release|x86
+		{D081BCA4-14FD-4FBC-B92A-82574AB0478B}.Debug|x86.ActiveCfg = Debug|x86
+		{D081BCA4-14FD-4FBC-B92A-82574AB0478B}.Debug|x86.Build.0 = Debug|x86
+		{D081BCA4-14FD-4FBC-B92A-82574AB0478B}.Release|x86.ActiveCfg = Release|x86
+		{D081BCA4-14FD-4FBC-B92A-82574AB0478B}.Release|x86.Build.0 = Release|x86
+		{D081BCA4-14FD-4FBC-B92A-82574AB0478B}.Squirrel|x86.ActiveCfg = Release|x86
+		{D081BCA4-14FD-4FBC-B92A-82574AB0478B}.Squirrel|x86.Build.0 = Release|x86
+		{7CF4E289-B871-4E52-B451-EE7BF1250359}.Debug|x86.ActiveCfg = Debug|x86
+		{7CF4E289-B871-4E52-B451-EE7BF1250359}.Debug|x86.Build.0 = Debug|x86
+		{7CF4E289-B871-4E52-B451-EE7BF1250359}.Release|x86.ActiveCfg = Release|x86
+		{7CF4E289-B871-4E52-B451-EE7BF1250359}.Release|x86.Build.0 = Release|x86
+		{7CF4E289-B871-4E52-B451-EE7BF1250359}.Squirrel|x86.ActiveCfg = Debug|x86
+		{7CF4E289-B871-4E52-B451-EE7BF1250359}.Squirrel|x86.Build.0 = Debug|x86
+		{1324828D-7E53-4458-BE90-A6EEAA565810}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1324828D-7E53-4458-BE90-A6EEAA565810}.Debug|x86.Build.0 = Debug|Any CPU
+		{1324828D-7E53-4458-BE90-A6EEAA565810}.Release|x86.ActiveCfg = Release|Any CPU
+		{1324828D-7E53-4458-BE90-A6EEAA565810}.Release|x86.Build.0 = Release|Any CPU
+		{1324828D-7E53-4458-BE90-A6EEAA565810}.Squirrel|x86.ActiveCfg = Debug|Any CPU
+		{1324828D-7E53-4458-BE90-A6EEAA565810}.Squirrel|x86.Build.0 = Debug|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECF19AE1-60AA-4AF8-A232-DDA7927AC94D}
+	EndGlobalSection
+EndGlobal

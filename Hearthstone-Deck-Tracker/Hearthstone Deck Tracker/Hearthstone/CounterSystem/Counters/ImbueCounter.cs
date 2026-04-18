@@ -1,0 +1,86 @@
+﻿using HearthDb.Enums;
+using Hearthstone_Deck_Tracker.Hearthstone.Entities;
+using Hearthstone_Deck_Tracker.LogReader.Interfaces;
+using Hearthstone_Deck_Tracker.Utility;
+
+namespace Hearthstone_Deck_Tracker.Hearthstone.CounterSystem.Counters;
+
+public class ImbueCounter : NumericCounter
+{
+	protected override string? CardIdToShowInUI => IsHamuul ?
+		HearthDb.CardIds.NonCollectible.Druid.DreamboundDisciple_BlessingOfTheGolem :
+		HearthDb.CardIds.Collectible.Neutral.MalorneTheWaywatcher;
+
+	public override string LocalizedName => LocUtil.Get("Counter_Imbue", useCardLanguage: true);
+
+	public override string[] RelatedCards => new string[]
+	{
+		HearthDb.CardIds.NonCollectible.Druid.DreamboundDisciple_BlessingOfTheGolem,
+		HearthDb.CardIds.NonCollectible.Hunter.BlessingOfTheWolf,
+		HearthDb.CardIds.NonCollectible.Mage.BlessingOfTheWisp,
+		HearthDb.CardIds.NonCollectible.Paladin.BlessingOfTheDragon,
+		HearthDb.CardIds.NonCollectible.Priest.LunarwingMessenger_BlessingOfTheMoon,
+		HearthDb.CardIds.NonCollectible.Shaman.BlessingOfTheWind,
+		HearthDb.CardIds.NonCollectible.Deathknight.Finality_BlessingOfTheInfinite,
+		HearthDb.CardIds.NonCollectible.Rogue.Eventuality_BlessingOfTheBronze,
+		HearthDb.CardIds.Collectible.Neutral.MalorneTheWaywatcher,
+	};
+
+	public ImbueCounter(bool controlledByPlayer, GameV2 game) : base(controlledByPlayer, game)
+	{
+	}
+
+	public override bool ShouldShow()
+	{
+		if(!Game.IsTraditionalHearthstoneMatch) return false;
+		return Counter > 0;
+	}
+
+	public override string[] GetCardsToDisplay()
+	{
+		return IsPlayerCounter ?
+			GetCardsInDeckOrKnown(RelatedCards).ToArray() :
+			FilterCardsByClassAndFormat(RelatedCards, Game.Opponent.OriginalClass);
+	}
+
+	public override string ValueToShow() => IsHamuul ? $"{Counter}  {SubCounter}/3" : Counter.ToString();
+
+	private bool IsHamuul = false;
+	private int SubCounter = 0;
+
+	public override void HandleTagChange(GameTag tag, IHsGameState gameState, Entity entity, int value, int prevValue)
+	{
+		if(!Game.IsTraditionalHearthstoneMatch)
+			return;
+
+		var controller = entity.GetTag(GameTag.CONTROLLER);
+		var isCounterFromController = controller == Game.Player.Id && IsPlayerCounter
+		                               || controller == Game.Opponent.Id && !IsPlayerCounter;
+
+		if(!isCounterFromController)
+			return;
+
+		if(entity.CardId == HearthDb.CardIds.Collectible.Druid.HamuulRunetotem &&
+		   tag == GameTag.HAS_ACTIVATE_POWER && value == 1
+		)
+		{
+			IsHamuul = true;
+			return;
+		}
+
+		if(tag == GameTag.IMBUE_SUB_COUNTER && IsHamuul)
+		{
+			SubCounter = value;
+			OnCounterChanged();
+			return;
+		}
+
+		if(tag != (GameTag)3527)
+			return;
+
+		if(value == 0)
+			return;
+
+		Counter = value;
+	}
+}
