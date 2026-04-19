@@ -4,15 +4,7 @@
       "Bash(git *)",
       "Bash(grep *)",
       "Bash(mkdir *)",
-      "PowerShell(git *)",
-      "PowerShell(grep *)",
-      "PowerShell(mkdir *)",
-      "PowerShell(cd *; *)",
-      "PowerShell(msbuild *)",
-      "PowerShell(vstest.console *)",
-      "PowerShell(Get-ChildItem *)",
-      "PowerShell(Get-Content *)",
-      "PowerShell(Write-Host *)"
+      "PowerShell(msbuild \"c:\\\\code\\\\hsdt_plus\\\\Hearthstone-Deck-Tracker\\\\Hearthstone Deck Tracker.sln\" /p:Configuration=Debug /p:Platform=x86 /t:Build /v:minimal 2>&1)"
     ]
   }
 }

@@ -59,6 +59,12 @@ public class BattlegroundsMinionViewModel : ViewModel, ICardTooltip
 		set => SetProp(value);
 	}
 
+	public bool IsHarmful
+	{
+		get => GetProp(false);
+		set => SetProp(value);
+	}
+
 	public int Attack
 	{
 		get => GetProp(0);

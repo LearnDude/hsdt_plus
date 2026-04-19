@@ -6,7 +6,11 @@
         Title="Positioning Results"
         SizeToContent="WidthAndHeight"
         ResizeMode="CanMinimize"
+        Topmost="True"
         WindowStartupLocation="CenterScreen">
+    <controls:MetroWindow.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility"/>
+    </controls:MetroWindow.Resources>
     <controls:MetroWindow.IconTemplate>
         <DataTemplate>
             <Rectangle Margin="2" Opacity="0.7">
@@ -60,7 +64,20 @@
                         </ItemsControl.ItemsPanel>
                         <ItemsControl.ItemTemplate>
                             <DataTemplate>
-                                <hdt:BattlegroundsMinion Width="100" Height="100" Margin="0,4,-8,4"/>
+                                <Grid>
+                                    <hdt:BattlegroundsMinion Width="100" Height="100" Margin="0,4,-8,4"/>
+                                    <Canvas Width="100" Height="100" Margin="0,4,-8,4"
+                                            IsHitTestVisible="False"
+                                            Visibility="{Binding IsHarmful,
+                                                Converter={StaticResource BoolToVisibility}}">
+                                        <Line X1="12" Y1="12" X2="88" Y2="88"
+                                              Stroke="#CCFF3333" StrokeThickness="7"
+                                              StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                                        <Line X1="88" Y1="12" X2="12" Y2="88"
+                                              Stroke="#CCFF3333" StrokeThickness="7"
+                                              StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+                                    </Canvas>
+                                </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
                     </ItemsControl>

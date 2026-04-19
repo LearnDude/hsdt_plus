@@ -12,8 +12,10 @@ namespace Hearthstone_Deck_Tracker.Controls.Overlay.Battlegrounds.Positioning
 		public PositioningResultsViewModel(PositioningResult result)
 		{
 			Turn = result.Turn;
-			OptimalOrdering = result.OptimalOrder.Select(ToViewModel).ToList();
-			ActualOrdering = result.ActualOrder.Select(ToViewModel).ToList();
+			OptimalOrdering = result.OptimalOrder.Select(e => ToViewModel(e)).ToList();
+			ActualOrdering = result.ActualOrder
+				.Select((entity, i) => ToViewModel(entity, result.HarmfulMinionIndices.Contains(i)))
+				.ToList();
 			OptimalWinRate = FormatWinRate(result.OptimalWinRate);
 			ActualWinRate = FormatWinRate(result.ActualWinRate);
 			ActualRankText = $"ranked #{result.ActualRank} of {result.TotalPermutations}";
@@ -43,7 +45,7 @@ namespace Hearthstone_Deck_Tracker.Controls.Overlay.Battlegrounds.Positioning
 
 		private static string FormatWinRate(float rate) => $"{(int)(rate * 100)}%";
 
-		private static BattlegroundsMinionViewModel ToViewModel(Entity entity) =>
+		private static BattlegroundsMinionViewModel ToViewModel(Entity entity, bool isHarmful = false) =>
 			new BattlegroundsMinionViewModel
 			{
 				HasPoisonous = entity.HasTag(GameTag.POISONOUS),
@@ -56,6 +58,7 @@ namespace Hearthstone_Deck_Tracker.Controls.Overlay.Battlegrounds.Positioning
 				Attack = entity.Attack,
 				Health = entity.Health,
 				Card = entity.Card,
+				IsHarmful = isHarmful,
 			};
 	}
 }

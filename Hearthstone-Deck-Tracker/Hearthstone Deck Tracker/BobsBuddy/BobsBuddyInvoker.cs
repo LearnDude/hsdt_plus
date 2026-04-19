@@ -80,7 +80,7 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 
 			if(!_instances.TryGetValue(key, out var instance) && createInstanceIfNoneFound)
 			{
-				instance = new BobsBuddyInvoker(key);
+				instance = new BobsBuddyInvoker(key, gameId);
 				_instances[key] = instance;
 			}
 			return instance;
@@ -92,11 +92,15 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 		}
 
 		private readonly string _instanceKey;
+		private Guid _gameId;
 
-		private BobsBuddyInvoker(string key)
+		internal bool PositioningLogWritten;
+
+		private BobsBuddyInvoker(string key, Guid gameId)
 		{
 			_game = Core.Game;
 			_instanceKey = key;
+			_gameId = gameId;
 		}
 
 
@@ -1171,6 +1175,12 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 			await Task.Delay(50);
 			var result = GetLastCombatResult();
 			var lethalResult = GetLastLethalResult();
+
+			if(PositioningLogWritten)
+			{
+				var damageReceived = result == CombatResult.Loss ? (int?)LastAttackingHeroAttack : null;
+				_ = PositioningLogger.RecordOutcomeAsync(_gameId, _turn, result.ToString(), damageReceived);
+			}
 
 			DebugLog($"result={result}, lethalResult={lethalResult}");
 
