@@ -8,8 +8,15 @@
       "Bash(git config *)",
       "Bash(git remote *)",
       "Bash(git push *)",
+      "Bash(mkdir *)",
       "PowerShell(cd *; msbuild *)",
-      "PowerShell(msbuild *)"
+      "PowerShell(msbuild *)",
+      "PowerShell(Get-ChildItem *)",
+      "PowerShell(Get-Content *)",
+      "PowerShell(cd *; vstest.console *)",
+      "PowerShell(vstest.console *)",
+      "PowerShell(Write-Host *)",
+      "PowerShell(cd *; $result = msbuild *; $result *)"
     ]
   }
 }
