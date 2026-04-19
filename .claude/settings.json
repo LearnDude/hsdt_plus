@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -E \"\\.cs$\")",
+      "Bash(git add *)",
+      "Bash(git rm *)",
+      "Bash(git commit -m *)",
+      "Bash(git config *)",
+      "Bash(git remote *)",
+      "Bash(git push *)",
+      "PowerShell(cd *; msbuild *)",
+      "PowerShell(msbuild *)"
+    ]
+  }
+}
