@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using BobsBuddy.Simulation;
 using Hearthstone_Deck_Tracker.Hearthstone;
-using Hearthstone_Deck_Tracker.Hearthstone.Entities;
 using Hearthstone_Deck_Tracker.Utility.Logging;
 using Hearthstone_Deck_Tracker.Windows;
+using Entity = Hearthstone_Deck_Tracker.Hearthstone.Entities.Entity;
 
 namespace Hearthstone_Deck_Tracker.BobsBuddy
 {
-	internal class PositioningResult
+	public class PositioningResult
 	{
 		public int Turn { get; set; }
 		public List<Entity> ActualOrder { get; set; } = new();
@@ -82,7 +82,7 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 				{
 					var output = await new SimulationRunner().SimulateMultiThreaded(
 						capturedInput, PositioningIterations, BobsBuddyInvoker.ThreadCount, MaxTimePerPermutationMs);
-					results.Add(((int[])perm.Clone(), output?.WinRate ?? 0f));
+					results.Add(((int[])perm.Clone(), output?.winRate ?? 0f));
 				}
 				catch(Exception e)
 				{

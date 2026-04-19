@@ -61,7 +61,7 @@ namespace Hearthstone_Deck_Tracker.Hearthstone
 		public RelatedCardsManager RelatedCardsManager { get; }
 		public ArenaPackagesManager ArenaPackagesManager { get; }
 		public bool IsChinaModuleActive { get; set; }
-		public BobsBuddy.PositioningSimulator PositioningSimulator { get; } = new BobsBuddy.PositioningSimulator();
+		internal BobsBuddy.PositioningSimulator PositioningSimulator { get; } = new BobsBuddy.PositioningSimulator();
 		public GameV2()
 		{
 			Player = new Player(this, true);
