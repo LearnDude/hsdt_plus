@@ -362,7 +362,9 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 			_attackingHero = attacker;
 		}
 
-		private void SetupInputPlayer(
+		internal Input? CapturedInput => _input;
+
+		internal void SetupInputPlayer(
 			Simulator simulator,
 			Hearthstone.Player gamePlayer,
 			BobsBuddyPlayer inputPlayer,
@@ -872,7 +874,7 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 			}
 		}
 
-		private IEnumerable<Entity> GetAttachedEntities(int entityId)
+		internal IEnumerable<Entity> GetAttachedEntities(int entityId)
 			=> _game.Entities.Values
 				.Where(x => x.IsAttachedTo(entityId) && (x.IsInPlay || x.IsInSetAside || x.IsInGraveyard))
 				.Select(x => x.Clone());

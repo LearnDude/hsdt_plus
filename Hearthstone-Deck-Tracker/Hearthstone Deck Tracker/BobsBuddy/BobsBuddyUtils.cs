@@ -197,6 +197,33 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 		internal static IOrderedEnumerable<Entity> GetOrderedHandEntities(IEnumerable<Entity> hand)
 			=> hand.OrderBy(x => x.GetTag(GameTag.ZONE_POSITION));
 
+		// Heap's algorithm: generates all n! permutations, modifying arr in place, yielding clones.
+		internal static IEnumerable<T[]> Permutations<T>(T[] arr)
+		{
+			var n = arr.Length;
+			var c = new int[n];
+			yield return (T[])arr.Clone();
+			var i = 0;
+			while(i < n)
+			{
+				if(c[i] < i)
+				{
+					if(i % 2 == 0)
+						(arr[0], arr[i]) = (arr[i], arr[0]);
+					else
+						(arr[c[i]], arr[i]) = (arr[i], arr[c[i]]);
+					yield return (T[])arr.Clone();
+					c[i]++;
+					i = 0;
+				}
+				else
+				{
+					c[i] = 0;
+					i++;
+				}
+			}
+		}
+
 		private static string? _versionString;
 		internal static string VersionString => _versionString ??= "v" + typeof(SimulationRunner).Assembly.GetName().Version.ToVersionString();
 	}

@@ -1,0 +1,72 @@
+<controls:MetroWindow x:Class="Hearthstone_Deck_Tracker.Windows.PositioningResultsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+        xmlns:hdt="clr-namespace:Hearthstone_Deck_Tracker.Controls"
+        Title="Positioning Results"
+        SizeToContent="WidthAndHeight"
+        ResizeMode="CanMinimize"
+        WindowStartupLocation="CenterScreen">
+    <controls:MetroWindow.IconTemplate>
+        <DataTemplate>
+            <Rectangle Margin="2" Opacity="0.7">
+                <Rectangle.Fill>
+                    <VisualBrush Visual="{StaticResource hdticon}" />
+                </Rectangle.Fill>
+            </Rectangle>
+        </DataTemplate>
+    </controls:MetroWindow.IconTemplate>
+    <Border Background="#1C2022" Padding="16">
+        <StackPanel MinWidth="400">
+
+            <!-- OPTIMAL row -->
+            <Border Background="#1A3020" CornerRadius="4" Padding="12,8" Margin="0,0,0,6">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                        <TextBlock Text="OPTIMAL" FontSize="13" FontWeight="Bold"
+                                   Foreground="#4CAF50" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding OptimalWinRate, StringFormat='  Win {0}  (optimal)'}"
+                                   FontSize="13" Foreground="#CCFFFFFF" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding OptimalOrdering}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <hdt:BattlegroundsMinion Width="100" Height="100" Margin="0,4,-8,4"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+            <!-- YOURS row -->
+            <Border Background="#1A1F2A" CornerRadius="4" Padding="12,8">
+                <StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,4">
+                        <TextBlock Text="YOURS" FontSize="13" FontWeight="Bold"
+                                   Foreground="#90CAF9" VerticalAlignment="Center"/>
+                        <TextBlock Text="{Binding ActualWinRateLine, StringFormat='  {0}'}"
+                                   FontSize="13" Foreground="#CCFFFFFF" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <ItemsControl ItemsSource="{Binding ActualOrdering}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <hdt:BattlegroundsMinion Width="100" Height="100" Margin="0,4,-8,4"/>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </Border>
+
+        </StackPanel>
+    </Border>
+</controls:MetroWindow>

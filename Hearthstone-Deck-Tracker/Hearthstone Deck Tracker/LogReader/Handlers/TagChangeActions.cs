@@ -179,8 +179,10 @@ namespace Hearthstone_Deck_Tracker.LogReader.Handlers
 				Core.Overlay.BgsMinionPinningShop.Visibility = Visibility.Collapsed;
 				if(game.IsBattlegroundsSoloMatch && game.CurrentGameStats != null)
 				{
-					BobsBuddyInvoker.GetInstance(game.CurrentGameStats.GameId, gameState.GetTurnNumber())?
+					var turn = gameState.GetTurnNumber();
+					BobsBuddyInvoker.GetInstance(game.CurrentGameStats.GameId, turn)?
 						.StartCombat();
+					Core.Game.PositioningSimulator.CaptureState(game, turn);
 				}
 			}
 		}
