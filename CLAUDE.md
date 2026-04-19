@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Working on this project
 
-Before starting any implementation task, read the relevant documentation in `AI/hdt_documentation/` — especially [battlegrounds.md](AI/hdt_documentation/battlegrounds.md) for anything touching BobsBuddy or Battlegrounds, and [architecture.md](AI/hdt_documentation/architecture.md) for cross-cutting questions. The index is at [AI/hdt_documentation/index.md](AI/hdt_documentation/index.md). Also read the relevant plan in `AI/plans/` before asking clarifying questions that the plan already answers.
+Before starting any implementation or planning task, read the relevant documentation in `AI/hdt_documentation/` — especially [battlegrounds.md](AI/hdt_documentation/battlegrounds.md) for anything touching BobsBuddy or Battlegrounds, and [architecture.md](AI/hdt_documentation/architecture.md) for cross-cutting questions. The index is at [AI/hdt_documentation/index.md](AI/hdt_documentation/index.md). Also read the relevant plan in `AI/plans/` before asking clarifying questions that the plan already answers.
 
 ## Repository layout
 

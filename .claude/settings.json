@@ -1,10 +1,12 @@
 {
+  "defaultShell": "powershell",
   "permissions": {
     "allow": [
       "Bash(git *)",
       "Bash(grep *)",
       "Bash(mkdir *)",
-      "PowerShell(msbuild \"c:\\\\code\\\\hsdt_plus\\\\Hearthstone-Deck-Tracker\\\\Hearthstone Deck Tracker.sln\" /p:Configuration=Debug /p:Platform=x86 /t:Build /v:minimal 2>&1)"
+      "PowerShell(msbuild *)",
+      "PowerShell(Get-ChildItem *)"
     ]
   }
 }

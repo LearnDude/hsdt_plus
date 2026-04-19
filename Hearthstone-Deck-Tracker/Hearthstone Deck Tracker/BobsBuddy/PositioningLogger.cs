@@ -56,10 +56,12 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 					ScreenPhaseResults  = screenResults.Select(ToEntry).ToList(),
 					ConfirmPhaseResults = confirmResults.Select(ToEntry).ToList(),
 
-					ActualRank     = result.ActualRank,
-					TotalPerms     = result.TotalPermutations,
-					ActualWinRate  = result.ActualWinRate,
-					OptimalWinRate = result.OptimalWinRate,
+					ActualRank          = result.ActualRank,
+					TotalPerms          = result.TotalPermutations,
+					ActualWinRate       = result.ActualWinRate,
+					OptimalWinRate      = result.OptimalWinRate,
+					PermutationsAbove98 = result.PermutationsAbove98,
+					PermutationsBelow2  = result.PermutationsBelow2,
 				};
 
 				var path = Path.Combine(LogDir, $"{gameId}_t{turn}.json");
@@ -204,10 +206,12 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 			public List<PermutationEntry> ScreenPhaseResults  { get; set; } = new();
 			public List<PermutationEntry> ConfirmPhaseResults { get; set; } = new();
 
-			public int   ActualRank     { get; set; }
-			public int   TotalPerms     { get; set; }
-			public float ActualWinRate  { get; set; }
-			public float OptimalWinRate { get; set; }
+			public int   ActualRank           { get; set; }
+			public int   TotalPerms           { get; set; }
+			public float ActualWinRate        { get; set; }
+			public float OptimalWinRate       { get; set; }
+			public int   PermutationsAbove98  { get; set; }
+			public int   PermutationsBelow2   { get; set; }
 		}
 
 		public class PlayerContext

@@ -25,6 +25,8 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 		public int ActualRank { get; set; }
 		public int TotalPermutations { get; set; }
 		public HashSet<int> HarmfulMinionIndices { get; set; } = new();
+		public int PermutationsAbove98 { get; set; }
+		public int PermutationsBelow2  { get; set; }
 	}
 
 	internal class PositioningSimulator
@@ -142,6 +144,8 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 			var harmfulIndices = new HashSet<int>();
 			int actualIdx = 0;
 			int totalPermutations = 0;
+			int above98 = 0;
+			int below2 = 0;
 
 			using(var semaphore = new SemaphoreSlim(_parallelDegree))
 			{
@@ -188,6 +192,8 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 					actualResult = allResults[actualIdx];
 					optimalResult = allResults[0];
 					totalPermutations = allResults.Count;
+					above98 = allResults.Count(r => r.winRate >= 0.98f);
+					below2  = allResults.Count(r => r.winRate <= 0.02f);
 
 					// --- Removal phase: flag minions whose removal improves win rate ---
 					if(n >= 2)
@@ -241,6 +247,8 @@ namespace Hearthstone_Deck_Tracker.BobsBuddy
 				ActualRank = actualIdx + 1,
 				TotalPermutations = totalPermutations,
 				HarmfulMinionIndices = harmfulIndices,
+				PermutationsAbove98  = above98,
+				PermutationsBelow2   = below2,
 			};
 
 			var logInvoker = BobsBuddyInvoker.GetInstance(_gameId, _turn, createInstanceIfNoneFound: false);

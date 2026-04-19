@@ -84,6 +84,15 @@
                 </StackPanel>
             </Border>
 
+            <!-- Extreme outcomes footer -->
+            <TextBlock Text="{Binding ExtremeOutcomesLine}"
+                       FontSize="11"
+                       Foreground="#99FFFFFF"
+                       HorizontalAlignment="Center"
+                       Margin="0,8,0,0"
+                       Visibility="{Binding HasExtremeOutcomes,
+                           Converter={StaticResource BoolToVisibility}}"/>
+
         </StackPanel>
     </Border>
 </controls:MetroWindow>
